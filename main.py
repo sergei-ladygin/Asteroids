@@ -2,7 +2,10 @@ import pygame
 from constants import *
 
 # Initialize Pygame
-pygame.init()    
+pygame.init()
+
+clock = pygame.time.Clock()
+dt = 0    
 
 # Set up the display
 pygame.display.set_caption("Asteroids")
@@ -14,11 +17,12 @@ while run:
     # Fill the screen with black color
     screen.fill((0, 0, 0))    # RGB for black
     
-    
     # Handle events
     for e in pygame.event.get():
         if e.type == pygame.QUIT:
             run = False
+        clock.tick(60)
+    dt = clock.tick() / 1000
     
     # Refresh the screen        
     pygame.display.flip()
