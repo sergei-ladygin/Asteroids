@@ -5,7 +5,7 @@ from circleshape import CircleShape
 class Player(CircleShape):
     def __init__(self, x, y):
         super().__init__(x, y, PLAYER_RADIUS) 
-        rotation = 0
+        self.rotation = 0
         
     def triangle(self):
         # Create a triangle pointing forward, with the tip at the player's position
@@ -18,5 +18,5 @@ class Player(CircleShape):
         return [a, b, c]
 
     def draw(self, screen):
-        pygame.draw.polygon(screen, (255, 255, 255), self.triangle(), 2)
+        pygame.draw.polygon(screen, (255, 255, 255), self.triangle(), 4)
         

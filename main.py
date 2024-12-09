@@ -1,6 +1,7 @@
 import pygame
 from constants import *
 from player import Player
+from circleshape import CircleShape
 
 # Initialize Pygame
 pygame.init()
@@ -12,14 +13,17 @@ dt = 0
 pygame.display.set_caption("Asteroids")
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 
+# Create a player
+player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
+
 # Game loop
 run = True
 while run:
     # Fill the screen with black color
     screen.fill((0, 0, 0))    # RGB for black
     
-    player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
     
+    player.draw(screen) 
     
     # Handle events
     for e in pygame.event.get():
