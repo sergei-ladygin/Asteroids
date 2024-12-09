@@ -6,7 +6,10 @@ from circleshape import CircleShape
 # Initialize Pygame
 pygame.init()
 
-clock = pygame.time.Clock()
+def main():
+    print("Starting asteroids!")
+    print(f'Screen width: {SCREEN_WIDTH}\nScreen height: {SCREEN_HEIGHT}')
+
 dt = 0    
 
 # Set up the display
@@ -16,28 +19,29 @@ screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 # Create a player
 player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
 
+# Create a clock object for the frame rate control
+clock = pygame.time.Clock()
+
 # Game loop
 run = True
 while run:
-    # Fill the screen with black color
+    
+    dt = clock.tick(60) / 1000    # Calculate delta time before updates
+    
     screen.fill((0, 0, 0))    # RGB for black
-    
-    
-    player.draw(screen) 
+      
+    player.draw(screen)
+    player.update(dt) 
     
     # Handle events
     for e in pygame.event.get():
         if e.type == pygame.QUIT:
             run = False
-        clock.tick(60)
-    dt = clock.tick() / 1000
     
     # Refresh the screen        
     pygame.display.flip()
 
-def main():
-    print("Starting asteroids!")
-    print(f'Screen width: {SCREEN_WIDTH}\nScreen height: {SCREEN_HEIGHT}')    
+    
 
 
 if __name__ == "__main__":
