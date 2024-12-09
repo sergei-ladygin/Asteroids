@@ -8,9 +8,7 @@ pygame.init()
 
 def main():
     print("Starting asteroids!")
-    print(f'Screen width: {SCREEN_WIDTH}\nScreen height: {SCREEN_HEIGHT}')
-
-dt = 0    
+    print(f'Screen width: {SCREEN_WIDTH}\nScreen height: {SCREEN_HEIGHT}')   
 
 # Set up the display
 pygame.display.set_caption("Asteroids")
