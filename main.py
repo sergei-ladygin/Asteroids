@@ -1,5 +1,6 @@
 import pygame
 from constants import *
+from player import Player
 
 # Initialize Pygame
 pygame.init()
@@ -17,6 +18,9 @@ while run:
     # Fill the screen with black color
     screen.fill((0, 0, 0))    # RGB for black
     
+    player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
+    
+    
     # Handle events
     for e in pygame.event.get():
         if e.type == pygame.QUIT:
@@ -30,5 +34,7 @@ while run:
 def main():
     print("Starting asteroids!")
     print(f'Screen width: {SCREEN_WIDTH}\nScreen height: {SCREEN_HEIGHT}')    
+
+
 if __name__ == "__main__":
     main()
