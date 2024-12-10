@@ -16,6 +16,12 @@ screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 
 # Create a player
 player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
+updatable = pygame.sprite.Group()
+drawable = pygame.sprite.Group() 
+Player.containers = (updatable, drawable)
+# Add the player to the sprite groups
+updatable.add(player)
+drawable.add(player)
 
 # Create a clock object for the frame rate control
 clock = pygame.time.Clock()
@@ -27,9 +33,11 @@ while run:
     dt = clock.tick(60) / 1000    # Calculate delta time before updates
     
     screen.fill((0, 0, 0))    # RGB for black
-      
-    player.draw(screen)
-    player.update(dt) 
+    
+    for sprite in drawable:
+        sprite.draw(screen)
+    for sprite in updatable:    
+        sprite.update(dt)
     
     # Handle events
     for e in pygame.event.get():
