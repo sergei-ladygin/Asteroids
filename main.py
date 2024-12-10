@@ -1,7 +1,10 @@
 import pygame
 from constants import *
-from player import Player
 from circleshape import CircleShape
+from player import Player
+from asteroid import Asteroid
+from asteroidfield import AsteroidField
+
 
 # Initialize Pygame
 pygame.init()
@@ -14,13 +17,20 @@ def main():
 pygame.display.set_caption("Asteroids")
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 
-# Create a player
-player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
+# Create sprites
 updatable = pygame.sprite.Group()
-drawable = pygame.sprite.Group() 
+drawable = pygame.sprite.Group()
+asteroids = pygame.sprite.Group()
+
 Player.containers = (updatable, drawable)
-# Add the player to the sprite groups
+Asteroid.containers = (asteroids, updatable, drawable)
+AsteroidField.containers = (updatable)
+
+player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
+asteroid_field = AsteroidField()    # spawns a new Asteroid
+
 updatable.add(player)
+updatable.add(asteroid_field)
 drawable.add(player)
 
 # Create a clock object for the frame rate control
