@@ -91,6 +91,13 @@ def main():
                     if sprite != other and sprite.collide(other):
                         sprite.kill()    # asteroids wipe out
                         other.kill()
+            
+            # Bullet destroys oasteroids
+            for sprite in asteroids:
+                for bullet in shoots:
+                    if sprite != bullet and sprite.collide(bullet):
+                        sprite.kill()    # asteroid wipe out
+                        bullet.kill()    # bullet wipe out
                         
             # Check for collisions between player and asteroids
             for asteroid in asteroids:

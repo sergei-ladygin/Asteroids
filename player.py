@@ -40,9 +40,7 @@ class Player(CircleShape):
         # Decrement the cooldown timer
         if self.cooldown_timer > 0:
             self.cooldown_timer -= dt
-            
-            
-            
+                                    
     def move(self, dt):
         forward = pygame.Vector2(0, 1).rotate(self.rotation)
         self.position += forward * PLAYER_SPEED * dt
