@@ -15,22 +15,29 @@ class Asteroid(CircleShape):
         self.position += self.velocity * dt
         
     def split(self):
-        self.kill()
         if self.radius <= ASTEROID_MIN_RADIUS:
+            self.kill()
             return
-        else:
-            new_radius = self.radius - ASTEROID_MIN_RADIUS
         
-            # Create first new asteroid
-            new_velocity1 = pygame.Vector2(random.uniform(-1, 1), random.uniform(-1, 1)).rotate(0)
-            new_asteroid1 = Asteroid(self.position.x, self.position.y, new_radius)
-            new_asteroid1.velocity = new_velocity1 * 1.2
-            for container in Asteroid.containers:
-                container.add(new_asteroid1)
-        
-            # Create second new asteroid
-            new_velocity2 = pygame.Vector2(random.uniform(-1, 1), random.uniform(-1, 1)).rotate(180)
-            new_asteroid2 = Asteroid(self.position.x, self.position.y, new_radius)
-            new_asteroid2.velocity = new_velocity2 * 1.2
-            for container in Asteroid.containers:
-                container.add(new_asteroid2)
+        new_radius = self.radius - ASTEROID_MIN_RADIUS
+
+        # New asteroid spawning
+        random_angle = random.uniform(0, 360)
+        new_velocity1 = pygame.Vector2(1, 0).rotate(random_angle)
+        offset1 = new_velocity1 * 10  # Slide
+        new_asteroid1 = Asteroid(self.position.x + offset1.x, self.position.y + offset1.y, new_radius)
+        new_asteroid1.velocity = new_velocity1 * 50  # Speed increment
+
+        # Second asteroid spawning
+        random_angle2 = random.uniform(0, 360)
+        new_velocity2 = pygame.Vector2(1, 0).rotate(-random_angle)
+        offset2 = new_velocity2 * 10  # Slide
+        new_asteroid2 = Asteroid(self.position.x + offset2.x, self.position.y + offset2.y, new_radius)
+        new_asteroid2.velocity = new_velocity2 * 50  
+
+        for container in Asteroid.containers:
+            container.add(new_asteroid1)
+            container.add(new_asteroid2)
+
+        # Wipe out the old asteroid
+        self.kill()
