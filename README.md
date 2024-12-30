@@ -1,27 +1,23 @@
 # Asteroids
 
-##### The base of the cosmic shooter game. Wait for new updates later!
+### The base of the cosmic shooter game. Wait for new updates later!
 
-*Add a scoring system*
+*A scoring system*
 
-*Implement multiple lives and respawning*
+*Multiple lives and respawning*
 
-*Add an explosion effect for the asteroids*
+*Explosion effect for the asteroids*
 
-*Add acceleration to the player movement*
+*Acceleration to the player movement*
 
-*Make the objects wrap around the screen instead of disappearing*
+*Background image*
 
-*Add a background image*
+*Different weapon types*
 
-*Create different weapon types*
+*Different types of asteroids instead of perfectly round*
 
-*Make the asteroids lumpy instead of perfectly round*
+*Ship have a new form*
 
-*Make the ship have a triangular hit box instead of a circular one*
+*Shield power-up*
 
-*Add a shield power-up*
-
-*Add a speed power-up*
-
-*Add bombs that can be dropped*
+*Speed power-up*
